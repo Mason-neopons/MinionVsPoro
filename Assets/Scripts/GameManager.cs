@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
         get { return _instance; }
     }
 
+    public int money = 0;
+
     private void Awake()
     {
         _instance = this;

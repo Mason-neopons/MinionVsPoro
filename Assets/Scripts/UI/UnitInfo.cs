@@ -15,7 +15,7 @@ enum UI_Order : int
     AR = 7
 }
 
-public class UnitInfo : MonoBehaviour
+public class UnitInfo : UI_Manager
 {
 
     public Camera unitCam;
@@ -40,12 +40,6 @@ public class UnitInfo : MonoBehaviour
         Init();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void Init()
     {
         hpBar = transform.GetChild((int)UI_Order.HP).GetComponent<Slider>();
@@ -62,7 +56,7 @@ public class UnitInfo : MonoBehaviour
         unitCamScreen.texture = rt;
     }
 
-    public void OpenUnit(CUnit _unit)
+    public void SelectUnit(CUnit _unit)
     {
         unit = _unit;
         hpBar.maxValue = unit.sStatus.hp;
@@ -84,6 +78,6 @@ public class UnitInfo : MonoBehaviour
 
     public void CloseUnitInfo()
     {
-        
+        gameObject.SetActive(false);
     }
 }

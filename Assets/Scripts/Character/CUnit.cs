@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,15 +7,7 @@ public class CUnit : MonoBehaviour
 {
     public SUnitStatus sStatus;
 
-    void Start()
-    {
-
-    }
-
-    void Update()
-    {
-
-    }
+    public int kills = 0;
 
     public void InitStatus(string _name, int _damage, int _attack_range, int _attack_speed, int _hp)
     {
@@ -33,17 +26,23 @@ public class CUnit : MonoBehaviour
 
     public void AttackUnit(CUnit cUnitEnemy)
     {
-        cUnitEnemy.TakeDamage(sStatus.damage);
+        if(cUnitEnemy.TakeDamage(sStatus.damage))
+        {
+            kills++;
+            GameManager.Instance.money++;
+        }
     }
 
-    public void TakeDamage(int nDamage)
+    public bool TakeDamage(int nDamage)
     {
         sStatus.hp -= nDamage;
 
         if (sStatus.hp <= 0)
         {
             Dead();
+            return true;
         }
+        return false;
     }
 
     public void Dead()

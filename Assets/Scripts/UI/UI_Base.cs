@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class CPoro : CUnit
+public class UI_Base : MonoBehaviour
 {
-    //public int kills = 0;
 
-    
 }
